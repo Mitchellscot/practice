@@ -10,14 +10,16 @@ public class Easy
     /// <returns></returns>
     public static int[] TwoSum(int[] nums, int target) 
     {
-        int[] answer = [0,0];
+        if(nums.Length == 0)
+            return [0,0];
+        
         for (int i = 0; i < nums.Length; i++)
         {
-            if(nums[i] == nums.Length)
-                break;
+            if (i == nums.Length - 1)
+                return [0,0];
             else if(nums[i] + nums[i+1] == target)
-                return new [] {i, i + 1};
+                return [i, i + 1];
         }
-        return answer;
+        return [0,0];
     }
 }
