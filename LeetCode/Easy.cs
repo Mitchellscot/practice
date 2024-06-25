@@ -33,8 +33,10 @@ public class Easy
             int diff = target - nums[i];
             if(seen.ContainsKey(diff))
                 return [seen[diff], i];
-            else
+            else if(!seen.ContainsKey(diff) && !seen.ContainsKey(nums[i]))
+            {
                 seen.Add(nums[i], i);
+            }
         }
         return [0,0];
     }
