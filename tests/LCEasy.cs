@@ -41,5 +41,20 @@ namespace LCEasy
             var ans = IsPalindrome_0(num);
             Assert.Equal(expected, ans);
         }
+        [Theory]
+        [InlineData(121, true)]
+        [InlineData(-121, false)]
+        [InlineData(10, false)]
+        [InlineData(-101, false)]
+        [InlineData(0, true)]
+        [InlineData(1, true)]
+        [InlineData(11, true)]
+        [InlineData(111, true)]
+        [InlineData(1111, true)]
+        public void IsPalindrome_Test_1(int num, bool expected)
+        {
+            var ans = IsPalindrome_1(num);
+            Assert.Equal(expected, ans);
+        }
     }
 }

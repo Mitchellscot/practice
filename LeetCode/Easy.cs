@@ -53,7 +53,28 @@ public class Easy
         var secondHalfReversed = n.ToString().Length % 2 == 0 ? 
             String.Join("", stringified.Substring(middle).Reverse()) : 
             String.Join("", stringified.Substring(middle + 1).Reverse());
-            
+
         return firstHalf == secondHalfReversed;
+    }
+    //solution provided
+    public static bool IsPalindrome_1(int n)
+    {
+        // N Cant be negative, and if it ends in 0 
+        // then it starts with 0
+        if(n < 0 || (n % 10 == 0 && n != 0))
+            return false;
+
+        int revertedNumber = 0;
+        // Modding by 10 leaves you with the 
+        // last digit
+        // 12 % 10 => 2
+        while (n > revertedNumber)
+        {
+            //Append the last digit of n
+            revertedNumber = revertedNumber * 10 + n % 10;
+            //change the last digit of n
+            n /= 10;
+        }
+        return n == revertedNumber || n == revertedNumber / 10;
     }
 }
