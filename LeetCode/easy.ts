@@ -29,3 +29,18 @@ export const twoSum_1 = (nums: number[], target: number): number[] => {
     }
     return [0,0];
 };
+
+export const IsPalindrome_1 = (n: number): Boolean =>
+{
+    if(n < 0 || (n % 10 == 0 && n != 0))
+        return false;
+
+    let revertedNumber = 0;
+
+    while (n > revertedNumber)
+    {
+        revertedNumber = revertedNumber * 10 + n % 10;
+        n /= 10;
+    }
+    return n == revertedNumber || n == revertedNumber / 10;
+}
