@@ -77,4 +77,8 @@ public class Easy
         }
         return n == revertedNumber || n == revertedNumber / 10;
     }
+    public static int RomanToInt_0(string s)
+    {
+        return 0;
+    }
 }
