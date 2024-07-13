@@ -44,3 +44,45 @@ export const IsPalindrome_1 = (n: number): Boolean =>
     }
     return n == revertedNumber || n == revertedNumber / 10;
 }
+
+export const RomanToInt = (s: string): number =>
+{
+    let sum = 0;
+    for(let value of s)
+    {
+        switch (value)
+        {
+            case 'I':
+                sum += 1;
+                break;
+            case 'V':
+                sum += 5;
+                break;
+            case 'X':
+                sum += 10;
+                break;
+            case 'L':
+                sum += 50;
+                break;
+            case 'C':
+                sum +=100;
+                break;
+            case 'D':
+                sum +=500;
+                break;
+            case 'M':
+                sum += 1000;
+                break;
+            default:
+                break;
+        }
+    }
+    if(s.includes("IV") || s.includes("IX"))
+        sum = sum-2;
+    if(s.includes("XL") || s.includes("XC"))
+        sum = sum-20;
+    if(s.includes("CD") || s.includes("CM"))
+        sum = sum-200;
+
+    return sum;
+}

@@ -77,6 +77,11 @@ public class Easy
         }
         return n == revertedNumber || n == revertedNumber / 10;
     }
+    /// <summary>
+    /// Given a roman numeral, convert it to an integer. Assume always valid input.
+    /// </summary>
+    /// <param name="s"></param>
+    /// <returns></returns>
     public static int RomanToInt_0(string s)
     {
         var array = s.ToCharArray();
@@ -100,6 +105,9 @@ public class Easy
                 case 'C':
                     sum +=100;
                     break;
+                case 'D':
+                    sum +=500;
+                    break;
                 case 'M':
                     sum += 1000;
                     break;
@@ -113,6 +121,66 @@ public class Easy
             sum -= 20;
         if(s.Contains("CD") || s.Contains("CM"))
             sum -= 200;
+        return sum;
+    }
+    //LC solution provided
+    public static int RomanToInt_1(string s)
+    {
+        
+        Dictionary<char, int> values =
+        new Dictionary<char, int>() { { 'I', 1 },   { 'V', 5 },   { 'X', 10 },
+                                      { 'L', 50 },  { 'C', 100 }, { 'D', 500 },
+                                      { 'M', 1000 } };
+        int total = 0;
+        int i = 0;
+        while (i < s.Length) {
+            // If this is the subtractive case.
+            char currentSymbol = s[i];
+            int currentValue = values[currentSymbol];
+            int nextValue = 0;
+            if (i + 1 < s.Length) {
+                char nextSymbol = s[i + 1];
+                nextValue = values[nextSymbol];
+            }
+
+            if (currentValue < nextValue) {
+                total += (nextValue - currentValue);
+                i += 2;
+            }
+            // else this is NOT the subtractive case.
+            else {
+                total += currentValue;
+                i += 1;
+            }
+        }
+        return total;
+    }
+    //variation on the above, just including the dobule digits and then checking if each section
+    //is a double digit or not.
+    public static int RomanToInt_2(string s)
+    {
+        Dictionary<string, int> values = new Dictionary<string, int> {
+        { "I", 1 },   { "V", 5 },    { "X", 10 },  { "L", 50 }, { "C", 100 },
+        { "D", 500 }, { "M", 1000 }, { "IV", 4 },  { "IX", 9 }, { "XL", 40 },
+        { "XC", 90 }, { "CD", 400 }, { "CM", 900 }
+        };
+        int sum = 0;
+        int i = 0;
+        while (i < s.Length) {
+            if (i < s.Length - 1) {
+                string doubleSymbol = s.Substring(i, 2);
+                if (values.ContainsKey(doubleSymbol)) {
+                    sum += values[doubleSymbol];
+                    i += 2;
+                    continue;
+                }
+            }
+
+            string singleSymbol = s.Substring(i, 1);
+            sum += values[singleSymbol];
+            i += 1;
+        }
+
         return sum;
     }
 }

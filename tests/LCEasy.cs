@@ -62,9 +62,34 @@ namespace LCEasy
         [InlineData("IX", 9)]
         [InlineData("LVIII", 58)]
         [InlineData("MCMXCIV", 1994)]
+        [InlineData("DCXXI", 621)]
         public void RomanToInt_Test_0(string numeral, int expected)
         {
             var ans = RomanToInt_0(numeral);
+            Assert.Equal(expected, ans);
+        }
+        [Theory]
+        [InlineData("III", 3)]
+        [InlineData("IV", 4)]
+        [InlineData("IX", 9)]
+        [InlineData("LVIII", 58)]
+        [InlineData("MCMXCIV", 1994)]
+        [InlineData("DCXXI", 621)]
+        public void RomanToInt_Test_1(string numeral, int expected)
+        {
+            var ans = RomanToInt_1(numeral);
+            Assert.Equal(expected, ans);
+        }
+        [Theory]
+        [InlineData("III", 3)]
+        [InlineData("IV", 4)]
+        [InlineData("IX", 9)]
+        [InlineData("LVIII", 58)]
+        [InlineData("MCMXCIV", 1994)]
+        [InlineData("DCXXI", 621)]
+        public void RomanToInt_Test_2(string numeral, int expected)
+        {
+            var ans = RomanToInt_1(numeral);
             Assert.Equal(expected, ans);
         }
 
