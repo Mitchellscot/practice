@@ -79,6 +79,40 @@ public class Easy
     }
     public static int RomanToInt_0(string s)
     {
-        return 0;
+        var array = s.ToCharArray();
+        var sum = 0;
+        foreach(var c in array)
+        {
+            switch (c)
+            {
+                case 'I':
+                    sum += 1;
+                    break;
+                case 'V':
+                    sum += 5;
+                    break;
+                case 'X':
+                    sum += 10;
+                    break;
+                case 'L':
+                    sum += 50;
+                    break;
+                case 'C':
+                    sum +=100;
+                    break;
+                case 'M':
+                    sum += 1000;
+                    break;
+                default:
+                    break;
+            }
+        }
+        if(s.Contains("IV") || s.Contains("IX"))
+            sum -= 2;
+        if(s.Contains("XL") || s.Contains("XC"))
+            sum -= 20;
+        if(s.Contains("CD") || s.Contains("CM"))
+            sum -= 200;
+        return sum;
     }
 }
