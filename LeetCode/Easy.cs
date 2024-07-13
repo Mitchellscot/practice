@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using Microsoft.VisualBasic;
 
 namespace LeetCode;
 
@@ -50,8 +51,8 @@ public class Easy
         var middle = n.ToString().Length / 2;
         var stringified = n.ToString();
         var firstHalf = stringified.Substring(0, middle);
-        var secondHalfReversed = n.ToString().Length % 2 == 0 ? 
-            String.Join("", stringified.Substring(middle).Reverse()) : 
+        var secondHalfReversed = n.ToString().Length % 2 == 0 ?
+            String.Join("", stringified.Substring(middle).Reverse()) :
             String.Join("", stringified.Substring(middle + 1).Reverse());
 
         return firstHalf == secondHalfReversed;
@@ -61,7 +62,7 @@ public class Easy
     {
         // N Cant be negative, and if it ends in 0 
         // then it starts with 0
-        if(n < 0 || (n % 10 == 0 && n != 0))
+        if (n < 0 || (n % 10 == 0 && n != 0))
             return false;
 
         int revertedNumber = 0;
@@ -86,7 +87,7 @@ public class Easy
     {
         var array = s.ToCharArray();
         var sum = 0;
-        foreach(var c in array)
+        foreach (var c in array)
         {
             switch (c)
             {
@@ -103,10 +104,10 @@ public class Easy
                     sum += 50;
                     break;
                 case 'C':
-                    sum +=100;
+                    sum += 100;
                     break;
                 case 'D':
-                    sum +=500;
+                    sum += 500;
                     break;
                 case 'M':
                     sum += 1000;
@@ -115,40 +116,44 @@ public class Easy
                     break;
             }
         }
-        if(s.Contains("IV") || s.Contains("IX"))
+        if (s.Contains("IV") || s.Contains("IX"))
             sum -= 2;
-        if(s.Contains("XL") || s.Contains("XC"))
+        if (s.Contains("XL") || s.Contains("XC"))
             sum -= 20;
-        if(s.Contains("CD") || s.Contains("CM"))
+        if (s.Contains("CD") || s.Contains("CM"))
             sum -= 200;
         return sum;
     }
     //LC solution provided
     public static int RomanToInt_1(string s)
     {
-        
+
         Dictionary<char, int> values =
         new Dictionary<char, int>() { { 'I', 1 },   { 'V', 5 },   { 'X', 10 },
                                       { 'L', 50 },  { 'C', 100 }, { 'D', 500 },
                                       { 'M', 1000 } };
         int total = 0;
         int i = 0;
-        while (i < s.Length) {
+        while (i < s.Length)
+        {
             // If this is the subtractive case.
             char currentSymbol = s[i];
             int currentValue = values[currentSymbol];
             int nextValue = 0;
-            if (i + 1 < s.Length) {
+            if (i + 1 < s.Length)
+            {
                 char nextSymbol = s[i + 1];
                 nextValue = values[nextSymbol];
             }
 
-            if (currentValue < nextValue) {
+            if (currentValue < nextValue)
+            {
                 total += (nextValue - currentValue);
                 i += 2;
             }
             // else this is NOT the subtractive case.
-            else {
+            else
+            {
                 total += currentValue;
                 i += 1;
             }
@@ -166,10 +171,13 @@ public class Easy
         };
         int sum = 0;
         int i = 0;
-        while (i < s.Length) {
-            if (i < s.Length - 1) {
+        while (i < s.Length)
+        {
+            if (i < s.Length - 1)
+            {
                 string doubleSymbol = s.Substring(i, 2);
-                if (values.ContainsKey(doubleSymbol)) {
+                if (values.ContainsKey(doubleSymbol))
+                {
                     sum += values[doubleSymbol];
                     i += 2;
                     continue;
@@ -182,5 +190,66 @@ public class Easy
         }
 
         return sum;
+    }
+    //with linq
+    public static string LongestCommonPrefix_0(string[] stringArray)
+    {
+        string answer = string.Empty;
+        if (stringArray.Length == 0)
+            return answer;
+        if (stringArray[0].Length == 0)
+            return answer;
+        char firstChar = stringArray[0].ToCharArray()[0];
+        foreach (var ch in stringArray[0])
+        {
+            if(answer == string.Empty)
+            {
+                if (stringArray.All(x => x.StartsWith(ch)))
+                    answer += ch;
+                else return answer;
+            }
+            else
+            {
+                if(stringArray.All(x => x.StartsWith($"{answer}{ch}")))
+                    answer += ch;
+                else return answer;
+            }
+        }
+        return answer;
+    }
+    //without linq
+    public static string LongestCommonPrefix_1(string[] strs)
+    {
+        string answer = string.Empty;
+        if (strs.Length == 0)
+            return answer;
+        if (strs[0].Length == 0)
+            return answer;
+
+        foreach (var ch in strs[0])
+        {
+            if(answer == string.Empty)
+            {
+                foreach(var str in strs)
+                {
+                    if (str.StartsWith(ch))
+                        continue;
+                    else return answer;
+                }
+                answer += ch;
+            }
+            else
+            {
+                var match = $"{answer}{ch}";
+                foreach(var str in strs)
+                {
+                    if (str.StartsWith(match))
+                        continue;
+                    else return answer;
+                }
+                answer = match;
+            }
+        }
+        return answer;
     }
 }

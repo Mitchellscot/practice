@@ -92,6 +92,22 @@ namespace LCEasy
             var ans = RomanToInt_1(numeral);
             Assert.Equal(expected, ans);
         }
+        [Theory]
+        [InlineData(new string[] {"flower","flow","flight"}, "fl")]
+        [InlineData(new string[] {"dog","racecar","car"}, "")]
+        public void LongestCommonPrefix_Test_0(string[] strs, string expected)
+        {
+            var ans = LongestCommonPrefix_0(strs);
+            Assert.Equal(expected, ans);
+        }
+        [Theory]
+        [InlineData(new string[] {"flower","flow","flight"}, "fl")]
+        [InlineData(new string[] {"dog","racecar","car"}, "")]
+        public void LongestCommonPrefix_Test_1(string[] strs, string expected)
+        {
+            var ans = LongestCommonPrefix_1(strs);
+            Assert.Equal(expected, ans);
+        }
 
     }
 }
