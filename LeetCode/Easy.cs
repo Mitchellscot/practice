@@ -202,7 +202,7 @@ public class Easy
         char firstChar = stringArray[0].ToCharArray()[0];
         foreach (var ch in stringArray[0])
         {
-            if(answer == string.Empty)
+            if (answer == string.Empty)
             {
                 if (stringArray.All(x => x.StartsWith(ch)))
                     answer += ch;
@@ -210,7 +210,7 @@ public class Easy
             }
             else
             {
-                if(stringArray.All(x => x.StartsWith($"{answer}{ch}")))
+                if (stringArray.All(x => x.StartsWith($"{answer}{ch}")))
                     answer += ch;
                 else return answer;
             }
@@ -228,9 +228,9 @@ public class Easy
 
         foreach (var ch in strs[0])
         {
-            if(answer == string.Empty)
+            if (answer == string.Empty)
             {
-                foreach(var str in strs)
+                foreach (var str in strs)
                 {
                     if (str.StartsWith(ch))
                         continue;
@@ -241,7 +241,7 @@ public class Easy
             else
             {
                 var match = $"{answer}{ch}";
-                foreach(var str in strs)
+                foreach (var str in strs)
                 {
                     if (str.StartsWith(match))
                         continue;
@@ -251,5 +251,27 @@ public class Easy
             }
         }
         return answer;
+    }
+    //provided
+    public static string LongestCommonPrefix_2(string[] strs)
+    {
+        if (strs.Length == 0)
+            return "";
+        //get the whole first word
+        string prefix = strs[0];
+        //loop through the other words one at a time
+        for (int i = 1; i < strs.Length; i++)
+        //while the prefix is not the same as the first word
+            while (strs[i].IndexOf(prefix) != 0)
+            {
+                //remove the last letter from the prefix
+                //and try again
+                prefix = prefix.Substring(0, prefix.Length - 1);
+
+                if (prefix == "")
+                    return "";
+            }
+
+        return prefix;
     }
 }

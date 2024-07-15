@@ -108,6 +108,14 @@ namespace LCEasy
             var ans = LongestCommonPrefix_1(strs);
             Assert.Equal(expected, ans);
         }
+        [Theory]
+        [InlineData(new string[] {"flower","flow","flight"}, "fl")]
+        [InlineData(new string[] {"dog","racecar","car"}, "")]
+        public void LongestCommonPrefix_Test_2(string[] strs, string expected)
+        {
+            var ans = LongestCommonPrefix_2(strs);
+            Assert.Equal(expected, ans);
+        }
 
     }
 }
