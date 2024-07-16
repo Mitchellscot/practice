@@ -261,7 +261,7 @@ public class Easy
         string prefix = strs[0];
         //loop through the other words one at a time
         for (int i = 1; i < strs.Length; i++)
-        //while the prefix is not the same as the first word
+            //while the prefix is not the same as the first word
             while (strs[i].IndexOf(prefix) != 0)
             {
                 //remove the last letter from the prefix
@@ -273,5 +273,40 @@ public class Easy
             }
 
         return prefix;
+    }
+    //Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+    public static bool ValidParentheses_0(string s)
+    {
+        Stack<char> chars = new();
+        for (int i = 0; i < s.Length; i++)
+        {
+            chars.Push(s[i]);
+            var result = chars.TryPeek(out var top);
+            if(!result)
+                continue;
+            var current = s[i+1];
+            switch (top)
+            {
+                case '(':
+                    if (current == ')')
+                        chars.Pop();
+                    else 
+                        chars.Push(current);
+                    break;
+                case '{':
+                    if (current == '}')
+                        chars.Pop();
+                    else 
+                        chars.Push(current);
+                    break;
+                case '[':
+                    if (current == ']')
+                        chars.Pop();
+                    else 
+                        chars.Push(current);
+                    break;
+            }
+        }
+        return chars.Count == 0;
     }
 }

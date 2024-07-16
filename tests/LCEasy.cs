@@ -116,6 +116,20 @@ namespace LCEasy
             var ans = LongestCommonPrefix_2(strs);
             Assert.Equal(expected, ans);
         }
+        [Theory]
+        // [InlineData("()", true)]
+        // [InlineData("()[]{}", true)]
+        // [InlineData("(]", false)]
+        // [InlineData("([)]", false)]
+        // [InlineData("{[]}", true)]
+        // [InlineData("]", false)]
+        // [InlineData("((", false)]
+        [InlineData("(){}}{", false)]
+        public void ValidParentheses_Test_0(string s, bool expected)
+        {
+            var ans = ValidParentheses_0(s);
+            Assert.Equal(expected, ans);
+        }
 
     }
 }
