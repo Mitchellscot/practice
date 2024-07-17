@@ -277,33 +277,51 @@ public class Easy
     //Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
     public static bool ValidParentheses_0(string s)
     {
+        if(s.Length == 0)
+            return false;
         Stack<char> chars = new();
         for (int i = 0; i < s.Length; i++)
         {
-            chars.Push(s[i]);
-            var result = chars.TryPeek(out var top);
-            if(!result)
-                continue;
-            var current = s[i+1];
-            switch (top)
+            var current = s[i];
+            var next = i == s.Length - 1 ? ' ' : s[i + 1];
+
+            switch (current)
             {
                 case '(':
-                    if (current == ')')
-                        chars.Pop();
+                    if (next == ')')
+                        i++;
                     else 
                         chars.Push(current);
                     break;
                 case '{':
-                    if (current == '}')
-                        chars.Pop();
+                    if (next == '}')
+                        i++;
                     else 
                         chars.Push(current);
                     break;
                 case '[':
-                    if (current == ']')
-                        chars.Pop();
+                    if (next == ']')
+                        i++;
                     else 
                         chars.Push(current);
+                    break;
+                case ')':
+                    if(chars.Count == 0 || chars.Peek() != '(')
+                        return false;
+                    else 
+                        chars.Pop();
+                    break;
+                case ']':
+                    if(chars.Count == 0 || chars.Peek() != '[')
+                        return false;
+                    else 
+                        chars.Pop();
+                    break;
+                case '}':
+                    if(chars.Count == 0 || chars.Peek() != '{')
+                        return false;
+                    else 
+                        chars.Pop();
                     break;
             }
         }

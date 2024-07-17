@@ -117,13 +117,13 @@ namespace LCEasy
             Assert.Equal(expected, ans);
         }
         [Theory]
-        // [InlineData("()", true)]
-        // [InlineData("()[]{}", true)]
-        // [InlineData("(]", false)]
-        // [InlineData("([)]", false)]
-        // [InlineData("{[]}", true)]
-        // [InlineData("]", false)]
-        // [InlineData("((", false)]
+        [InlineData("()", true)]
+        [InlineData("()[]{}", true)]
+        [InlineData("(]", false)]
+        [InlineData("([)]", false)]
+        [InlineData("{[]}", true)]
+        [InlineData("]", false)]
+        [InlineData("((", false)]
         [InlineData("(){}}{", false)]
         public void ValidParentheses_Test_0(string s, bool expected)
         {
