@@ -331,5 +331,8 @@ public class Easy
     public static int RemoveDuplicates_0(int[] nums) {
         return nums.Distinct().Count();
     }
+    public static int RemoveDuplicates_1(int[] nums) {
+        return nums.Distinct().Count();
+    }
 
 }

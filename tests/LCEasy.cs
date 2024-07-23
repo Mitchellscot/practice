@@ -141,6 +141,17 @@ namespace LCEasy
             var ans = RemoveDuplicates_0(nums);
             Assert.Equal(expected, ans);
         }
+        [Theory]
+        [InlineData(new int[] {1,1,2}, 2)]
+        [InlineData(new int[] {0,0,1,1,1,2,2,3,3,4}, 5)]
+        [InlineData(new int[] {1,1,1,1,1,1,1,1,1,1}, 1)]
+        [InlineData(new int[] {1,2,3,4,5,6,7,8,9,10}, 10)]
+        [InlineData(new int[] {1,1,2,2,3,3,4,4,5,5}, 5)]
+        public void RemoveDuplicates_Test_1(int[] nums, int expected)
+        {
+            var ans = RemoveDuplicates_1(nums);
+            Assert.Equal(expected, ans);
+        }
 
     }
 }
