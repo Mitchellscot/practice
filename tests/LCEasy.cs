@@ -152,6 +152,14 @@ namespace LCEasy
             var ans = RemoveDuplicates_1(nums);
             Assert.Equal(expected, ans);
         }
-
+        [Theory]
+        [InlineData(new char[]{'h','e','l','l','o'}, new char[]{'o','l','l','e','h'})]
+        [InlineData(new char[]{'H','a','n','n','a','h'}, new char[]{'h','a','n','n','a','H'})]
+        public void ReverseString_Test_0(char[] s, char[] expected)
+        {
+            var ans = ReverseString_0(s);
+            ReverseString_1(s);
+            Assert.Equal(expected, ans);
+        }
     }
 }

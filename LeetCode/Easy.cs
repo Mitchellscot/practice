@@ -1,7 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using Microsoft.VisualBasic;
-
-namespace LeetCode;
+﻿namespace LeetCode;
 
 public class Easy
 {
@@ -334,5 +331,26 @@ public class Easy
     public static int RemoveDuplicates_1(int[] nums) {
         return nums.Distinct().Count();
     }
-
+    //Write a function that reverses a string. The input string is given as an array of characters s.
+    public static char[] ReverseString_0(char[] s) {
+        var ans = new char[s.Length];
+        int j = s.Length - 1;
+        for (int i = 0; i < s.Length; i++)
+        {
+            ans[i] = s[j];
+            j--;
+        }
+        return ans;
+    }
+    //they wanted it sorted in place for some reason. This means it returns void and you only modify the input.
+    public static void ReverseString_1(char[] s) {
+        int j = s.Length - 1;
+        for (int i = 0; i < j; i++)
+        {
+            char m = s[i];
+            s[i] = s[j];
+            s[j] = m;
+            j--;
+        }
+    }
 }
