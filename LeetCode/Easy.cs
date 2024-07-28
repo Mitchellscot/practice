@@ -344,7 +344,7 @@ public class Easy
         }
         return ans;
     }
-    //they wanted it sorted in place for some reason. This means it returns void and you only modify the input.
+    //they wanted it sorted in place for some reason, returning void
     public static void ReverseString_1(char[] s) {
         int j = s.Length - 1;
         for (int i = 0; i < j; i++)
