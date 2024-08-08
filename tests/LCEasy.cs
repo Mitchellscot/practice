@@ -161,5 +161,13 @@ namespace LCEasy
             ReverseString_1(s);
             Assert.Equal(expected, ans);
         }
+        [Theory]
+        [InlineData(new int[]{-4,-1,0,3,10}, new int[]{0,1,9,16,100})]
+        [InlineData(new int[]{-7,-3,2,3,11}, new int[]{4,9,9,49,121})]
+        public void SortedSquares_Test_0(int[] nums, int[] expected)
+        {
+            var ans = SortedSquares_0(nums);
+            Assert.Equal(expected, ans);
+        }
     }
 }

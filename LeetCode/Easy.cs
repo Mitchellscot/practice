@@ -1,4 +1,6 @@
-﻿using System.Transactions;
+﻿using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+using System.Transactions;
 
 namespace LeetCode;
 
@@ -355,19 +357,33 @@ public class Easy
             j--;
         }
     }
-    //Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
-    // public static int[] SortedSquares_0(int[] nums)
-    // {
-    //     int[] ans = new int[nums.Length];
-    //     int j = 0;
-    //     int current = 0; 
-    //     for (int i = 0; i < nums.Length; j++)
-    //     {
-    //         var power = nums[i] * nums[i];
-    //         if(power <= ans[j])
-    //         {
-    //             current = power;
-    //         }
-    //     }
-    // }
+    // Given an integer array nums sorted in ascending order, return an array of the squares of each number sorted in ascending order.
+    public static int[] SortedSquares_0(int[] nums)
+    {
+        //three variables here. We have one pointer at the end, one pointer at the begining
+        //and then one to index through our answer array, assigning the largest values first
+        int z = nums.Length -1;
+        int y = 0;
+        int[] answer = new int[nums.Length];
+
+        for (int x = nums.Length -1; x >= 0 ; x--)
+        {
+            //largest powers will either be at the begining or the end
+            var leftPointer = nums[y] * nums[y];
+            var rightPointer = nums[z] * nums[z];
+            if(leftPointer > rightPointer)
+            {
+                //assign the largest power to the end of the array
+                answer[x] = leftPointer;
+                //the move the pointer to the next position
+                y++;
+            }
+            else
+            {
+                answer[x] = rightPointer;
+                z--;
+            }
+        }
+        return answer;
+    }
 }
