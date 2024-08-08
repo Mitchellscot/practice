@@ -356,18 +356,18 @@ public class Easy
         }
     }
     //Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
-    public static int[] SortedSquares_0(int[] nums)
-    {
-        int[] ans = new int[nums.Length];
-        int j = 0;
-        int current = 0; 
-        for (int i = 0; i < nums.Length; j++)
-        {
-            var power = nums[i] * nums[i];
-            if(power <= ans[j])
-            {
-                current = power;
-            }
-        }
-    }
+    // public static int[] SortedSquares_0(int[] nums)
+    // {
+    //     int[] ans = new int[nums.Length];
+    //     int j = 0;
+    //     int current = 0; 
+    //     for (int i = 0; i < nums.Length; j++)
+    //     {
+    //         var power = nums[i] * nums[i];
+    //         if(power <= ans[j])
+    //         {
+    //             current = power;
+    //         }
+    //     }
+    // }
 }
