@@ -90,4 +90,46 @@ public static class DSA
         }
         return i == s.Length;
     }
+    //reverse a string
+    public static char[] ReverseString(char[] s)
+    {
+        if (s.Length == 0)
+        {
+            return s;
+        }
+        char[] answer = new char[s.Length];
+        int answerIndex = 0;
+        for (int i = s.Length - 1; i >= 0; i--)
+        {
+            answer[answerIndex] = s[i];
+            answerIndex++;
+        }
+        return answer;
+    }
+    //reverse a string in place. i = start, e = end
+    public static void ReverseStringInPlace(char[] s)
+    {
+        // int i = 0;
+        // int e = s.Length - 1;
+        // while (i < e)
+        // {
+        //     char temp = s[i];
+        //     s[i] = s[e];
+        //     s[e] = temp;
+        //     i++;
+        //     e--;
+        // }
+        int e = s.Length - 1;
+        for (int i = 0; i < e; i++)
+        {
+            //first we move the current to a temp
+            char temp = s[i];
+            //then we override the current with the one at the end
+            s[i] = s[e];
+            //then we assign the one at the end the current
+            s[e] = temp;
+            //then move the pointer down
+            e--;
+        }
+    }
 }
