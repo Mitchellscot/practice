@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Edabit\Edabit.csproj" />
     <ProjectReference Include="..\LeetCode\LeetCode.csproj" />
+    <ProjectReference Include="..\DSA\DSA.csproj" />
   </ItemGroup>
 
 </Project>

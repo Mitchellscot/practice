@@ -1,8 +1,4 @@
-﻿using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Transactions;
-
-namespace LeetCode;
+﻿namespace LeetCode;
 
 public class Easy
 {
@@ -278,7 +274,7 @@ public class Easy
     //Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
     public static bool ValidParentheses_0(string s)
     {
-        if(s.Length == 0)
+        if (s.Length == 0)
             return false;
         Stack<char> chars = new();
         for (int i = 0; i < s.Length; i++)
@@ -291,37 +287,37 @@ public class Easy
                 case '(':
                     if (next == ')')
                         i++;
-                    else 
+                    else
                         chars.Push(current);
                     break;
                 case '{':
                     if (next == '}')
                         i++;
-                    else 
+                    else
                         chars.Push(current);
                     break;
                 case '[':
                     if (next == ']')
                         i++;
-                    else 
+                    else
                         chars.Push(current);
                     break;
                 case ')':
-                    if(chars.Count == 0 || chars.Peek() != '(')
+                    if (chars.Count == 0 || chars.Peek() != '(')
                         return false;
-                    else 
+                    else
                         chars.Pop();
                     break;
                 case ']':
-                    if(chars.Count == 0 || chars.Peek() != '[')
+                    if (chars.Count == 0 || chars.Peek() != '[')
                         return false;
-                    else 
+                    else
                         chars.Pop();
                     break;
                 case '}':
-                    if(chars.Count == 0 || chars.Peek() != '{')
+                    if (chars.Count == 0 || chars.Peek() != '{')
                         return false;
-                    else 
+                    else
                         chars.Pop();
                     break;
             }
@@ -329,14 +325,17 @@ public class Easy
         return chars.Count == 0;
     }
     //Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
-    public static int RemoveDuplicates_0(int[] nums) {
+    public static int RemoveDuplicates_0(int[] nums)
+    {
         return nums.Distinct().Count();
     }
-    public static int RemoveDuplicates_1(int[] nums) {
+    public static int RemoveDuplicates_1(int[] nums)
+    {
         return nums.Distinct().Count();
     }
     //Write a function that reverses a string. The input string is given as an array of characters s.
-    public static char[] ReverseString_0(char[] s) {
+    public static char[] ReverseString_0(char[] s)
+    {
         var ans = new char[s.Length];
         int j = s.Length - 1;
         for (int i = 0; i < s.Length; i++)
@@ -347,7 +346,8 @@ public class Easy
         return ans;
     }
     //they wanted it sorted in place for some reason, returning void
-    public static void ReverseString_1(char[] s) {
+    public static void ReverseString_1(char[] s)
+    {
         int j = s.Length - 1;
         for (int i = 0; i < j; i++)
         {
@@ -362,16 +362,16 @@ public class Easy
     {
         //three variables here. We have one pointer at the end, one pointer at the begining
         //and then one to index through our answer array, assigning the largest values first
-        int z = nums.Length -1;
+        int z = nums.Length - 1;
         int y = 0;
         int[] answer = new int[nums.Length];
 
-        for (int x = nums.Length -1; x >= 0 ; x--)
+        for (int x = nums.Length - 1; x >= 0; x--)
         {
             //largest powers will either be at the begining or the end
             var leftPointer = nums[y] * nums[y];
             var rightPointer = nums[z] * nums[z];
-            if(leftPointer > rightPointer)
+            if (leftPointer > rightPointer)
             {
                 //assign the largest power to the end of the array
                 answer[x] = leftPointer;
