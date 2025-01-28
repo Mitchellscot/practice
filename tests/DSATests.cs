@@ -5,14 +5,47 @@ namespace DSATests;
 public class DSATests
 {
     [Fact]
-    public void CheckIfPalidrome_works()
+    public void CheckIfPalidrome_test()
     {
         string s = "racecar";
         bool result = CheckIfPalidrome(s);
         Assert.True(result);
     }
     [Fact]
-    public void CombineAndSort_Test()
+    public void CheckForTarget_test()
+    {
+        // Test case 1: Target is found
+        int[] nums1 = { 1, 2, 3, 4, 5 };
+        int target1 = 9;
+        bool result1 = CheckForTarget(nums1, target1);
+        Assert.True(result1);
+
+        // Test case 2: Target is not found
+        int[] nums2 = { 1, 2, 3, 4, 5 };
+        int target2 = 10;
+        bool result2 = CheckForTarget(nums2, target2);
+        Assert.False(result2);
+
+        // Test case 3: Empty array
+        int[] nums3 = { };
+        int target3 = 1;
+        bool result3 = CheckForTarget(nums3, target3);
+        Assert.False(result3);
+
+        // Test case 4: Single element array
+        int[] nums4 = { 1 };
+        int target4 = 1;
+        bool result4 = CheckForTarget(nums4, target4);
+        Assert.False(result4);
+
+        // Test case 5: Array with negative numbers
+        int[] nums5 = { -3, -2, -1, 0, 1, 2, 3 };
+        int target5 = 0;
+        bool result5 = CheckForTarget(nums5, target5);
+        Assert.True(result5);
+    }
+    [Fact]
+    public void CombineAndSort_test()
     {
         // Test case 1: Both arrays are empty
         int[] arr1 = new int[] { };

@@ -145,7 +145,7 @@ public class Easy
 
             if (currentValue < nextValue)
             {
-                total += (nextValue - currentValue);
+                total += nextValue - currentValue;
                 i += 2;
             }
             // else this is NOT the subtractive case.
