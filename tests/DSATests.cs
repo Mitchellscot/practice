@@ -110,4 +110,42 @@ public class DSATests
         expected = true;
         Assert.Equal(expected, IsSubsequence(s, t));
     }
+    [Fact]
+    public void Squares_Test()
+    {
+        // Test case 1: Empty array
+        int[] nums1 = new int[] { };
+        int[] expected1 = new int[] { };
+        Assert.Equal(expected1, SortedSquares(nums1));
+
+        // Test case 2: Single element array
+        int[] nums2 = new int[] { 2 };
+        int[] expected2 = new int[] { 4 };
+        Assert.Equal(expected2, SortedSquares(nums2));
+
+        // Test case 3: Array with positive numbers
+        int[] nums3 = new int[] { 1, 2, 3 };
+        int[] expected3 = new int[] { 1, 4, 9 };
+        Assert.Equal(expected3, SortedSquares(nums3));
+
+        // Test case 4: Array with negative numbers
+        int[] nums4 = new int[] { -3, -2, -1 };
+        int[] expected4 = new int[] { 1, 4, 9 };
+        Assert.Equal(expected4, SortedSquares(nums4));
+
+        // Test case 5: Array with mixed positive and negative numbers
+        int[] nums5 = new int[] { -3, -1, 0, 1, 2 };
+        int[] expected5 = new int[] { 0, 1, 1, 4, 9 };
+        Assert.Equal(expected5, SortedSquares(nums5));
+
+        //Test case 6 from the lesson
+        int[] nums6 = new int[] { -4, -1, 0, 3, 10 };
+        int[] expected6 = new int[] { 0, 1, 9, 16, 100 };
+        Assert.Equal(expected6, SortedSquares(nums6));
+
+        //Test case 7 from the lesson
+        int[] nums7 = new int[] { -7, -3, 2, 3, 11 };
+        int[] expected7 = new int[] { 4, 9, 9, 49, 121 };
+        Assert.Equal(expected7, SortedSquares(nums7));
+    }
 }

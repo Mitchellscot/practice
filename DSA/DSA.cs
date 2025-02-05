@@ -90,4 +90,46 @@ public static class DSA
         }
         return i == s.Length;
     }
+    // Write a function that reverses a string. The input string is given as an array of characters s.
+    // Must be done in place...
+    public static void ReverseString(char[] s)
+    {
+        int e = s.Length - 1;
+        for (int i = 0; i < e; i++)
+        {
+            //first we move the current to a temp
+            char temp = s[i];
+            //then we override the current with the one at the end
+            s[i] = s[e];
+            //then we assign the one at the end the current
+            s[e] = temp;
+            //then move the pointer down
+            e--;
+        }
+    }
+    // Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+    public static int[] SortedSquares(int[] nums)
+    {
+
+        int z = nums.Length - 1;
+        int y = 0;
+        int[] answer = new int[nums.Length];
+
+        for (int x = nums.Length - 1; x >= 0; x--)
+        {
+            var leftPointer = nums[y] * nums[y];
+            var rightPointer = nums[z] * nums[z];
+            if (leftPointer > rightPointer)
+            {
+                answer[x] = leftPointer;
+                y++;
+            }
+            else
+            {
+                answer[x] = rightPointer;
+                z--;
+            }
+        }
+        return answer;
+    }
 }
