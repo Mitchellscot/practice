@@ -148,4 +148,37 @@ public class DSATests
         int[] expected7 = new int[] { 4, 9, 9, 49, 121 };
         Assert.Equal(expected7, SortedSquares(nums7));
     }
+    [Fact]
+    public void FindLength_Test()
+    {
+        int[] nums1 = { 1, 2, 3, 4, 5 };
+        int k1 = 5;
+        int expected1 = 2;
+        int result1 = FindLength(nums1, k1);
+        Assert.Equal(expected1, result1);
+
+        int[] nums2 = { 1, 1, 1, 1, 1 };
+        int k2 = 5;
+        int expected2 = 5;
+        int result2 = FindLength(nums2, k2);
+        Assert.Equal(expected2, result2);
+
+        int[] nums3 = { 6, 7, 8, 9, 10 };
+        int k3 = 5;
+        int expected3 = 0;
+        int result3 = FindLength(nums3, k3);
+        Assert.Equal(expected3, result3);
+
+        int[] nums4 = { 1, 2, 3, 4, 5, 1, 2, 3, 4, 5 };
+        int k4 = 11;
+        int expected4 = 4;
+        int result4 = FindLength(nums4, k4);
+        Assert.Equal(expected4, result4);
+
+        int[] nums5 = { 5 };
+        int k5 = 5;
+        int expected5 = 1;
+        int result5 = FindLength(nums5, k5);
+        Assert.Equal(expected5, result5);
+    }
 }

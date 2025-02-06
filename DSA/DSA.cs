@@ -132,4 +132,25 @@ public static class DSA
         }
         return answer;
     }
+    //Given an array of positive integers nums and an integer k, find the length of the longest subarray whose sum is less than or equal to k.
+    public static int FindLength(int[] nums, int k)
+    {
+        // curr is the current sum of the window
+        int left = 0, curr = 0, ans = 0;
+
+        for (int right = 0; right < nums.Length; right++)
+        {
+            curr += nums[right];
+
+            while (curr > k)
+            {
+                curr -= nums[left];
+                left++;
+            }
+            // answer the the length of the subarray. We want the longest one.
+            ans = Math.Max(ans, right - left + 1);
+        }
+
+        return ans;
+    }
 }
